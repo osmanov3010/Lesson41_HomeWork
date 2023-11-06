@@ -4,12 +4,16 @@ import ait.forum.model.Post;
 
 import java.time.LocalDate;
 
-public class ForumImpl implements Forum{
+public class ForumImpl implements Forum {
     private Post[] posts;
     private int size;
 
     @Override
     public boolean addPost(Post post) {
+
+        if (post == null || getPostById(post.getPostId()) != null){
+            return false;
+        }
         return false;
     }
 
@@ -40,6 +44,6 @@ public class ForumImpl implements Forum{
 
     @Override
     public int size() {
-        return 0;
+        return size;
     }
 }
