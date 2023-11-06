@@ -3,7 +3,6 @@ package ait.forum.dao;
 import ait.forum.model.Post;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -105,19 +104,5 @@ public class ForumImpl implements Forum {
     public int size() {
         return size;
     }
-
-    private Post[] findPostsByPredicate(Predicate<Post> predicate) {
-
-        Post[] result = new Post[size];
-        int count = 0;
-        for (int i = 0; i < size; i++) {
-            if (predicate.test(posts[i])) {
-                result[count++] = posts[i];
-            }
-        }
-
-        return Arrays.copyOf(result, count);
-    }
-
 
 }
