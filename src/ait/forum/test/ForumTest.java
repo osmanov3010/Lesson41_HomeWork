@@ -16,6 +16,8 @@ class ForumTest {
     @org.junit.jupiter.api.BeforeEach
     void setUp() {
 
+        forum = new ForumImpl();
+
         posts = new Post[]{
                 new Post(1, "Post 1", "Oleg", "Post 1 Content"),
                 new Post(2, "Post 2", "Maksim", "Post 2 Content"),
@@ -55,8 +57,11 @@ class ForumTest {
     @org.junit.jupiter.api.Test
     void removePost() {
         assertFalse(forum.removePost(11));
-        assertTrue(forum.removePost(9));
-        assertEquals(8, forum.size());
+        assertTrue(forum.removePost(1));
+        assertNull(forum.getPostById(1));
+        assertTrue(forum.removePost(4));
+        assertNull(forum.getPostById(4));
+        assertEquals(7, forum.size());
     }
 
     @org.junit.jupiter.api.Test
